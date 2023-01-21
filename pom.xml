@@ -1,27 +1,546 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
-  <groupId>de.kisner</groupId>
-	<artifactId>wareap8</artifactId>
-	<packaging>war</packaging>
-	<name>W</name>
-	
-	
+   <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.metachart</groupId>
+		<artifactId>metachart</artifactId>
+		<version>0.0.3-SNAPSHOT</version>
+	</parent>
+
+   <artifactId>metachart-showcase</artifactId>
+   <packaging>war</packaging>
+   <name>MC - Showcase</name>
+   
+	<properties>
+	  	<my.build.directory>target</my.build.directory>
+	  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	  	<maven.build.timestamp.format>yyyyMMdd'T'HHmmss</maven.build.timestamp.format>
+    </properties>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.jeesl.bom</groupId>
-				<artifactId>bom-eap80</artifactId>
+				<artifactId>bom-eap73</artifactId>
 				<version>0.3.0-SNAPSHOT</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.jeesl.bom</groupId>
+				<artifactId>bom-core</artifactId>
+				<version>0.3.0-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.metachart</groupId>
+				<artifactId>metachart-bom</artifactId>
+				<version>${project.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
 	</dependencyManagement>
-	
-	
-	<dependencies>   		
-   	
+
+	<dependencies>
+		<!-- MetaChart -->
+    		<dependency>  
+   			<groupId>org.metachart</groupId>  
+   			<artifactId>metachart-jsf</artifactId>
+   		</dependency>
+		
+		<dependency>
+			<!-- This references the commercial Pivot library by dhtmlx -->
+			<!-- If you want to use it, please obtain a license -->
+			<!-- And create the private artifact below including the CSS, font and JS files -->
+			<!-- They need to be stored in a resource library called cssDhtmlx respectively jsDhtmlx -->
+				<groupId>org.metachart</groupId>
+				<artifactId>metachart-dhtmlx</artifactId>
+				<version>1.3</version>
+		</dependency>
+   		
+   		<!-- JEESL -->
+   		<dependency>
+			<groupId>org.jeesl</groupId>
+			<artifactId>jeesl-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jeesl</groupId>
+			<artifactId>jeesl-prototype</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jeesl</groupId>
+			<artifactId>jeesl-report</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jeesl</groupId>
+			<artifactId>jeesl-util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jeesl</groupId>
+			<artifactId>jeesl-doc</artifactId>
+		</dependency>
+		
+		<!-- JEESL modules -->
+		<dependency>
+			<groupId>org.jeesl</groupId>
+			<artifactId>jeesl-io-locale</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jeesl</groupId>
+			<artifactId>jeesl-system-security</artifactId>
+		</dependency>
+		
+		<!-- GeoJSF -->
+		<dependency>
+			<groupId>org.geojsf</groupId>
+			<artifactId>geojsf-ejb</artifactId>
+			<version>0.1.2-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+		
+		<!-- XML 2017-08-19 -->
+		<dependency>
+   	   		<groupId>com.sun.xml.bind</groupId>
+   	   		<artifactId>jaxb-impl</artifactId>
+   	   		<scope>test</scope>
+   	   	</dependency>
+   	   	
+   	   	<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+
+   	   	<!-- Below may be old artifacs -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<scope>compile</scope>
+		</dependency>
+   		
+		<!-- JSF UI -->
+   		<dependency>  
+   			<groupId>org.primefaces</groupId>  
+   			<artifactId>primefaces</artifactId>
+  			<version>12.0.0</version>
+   		</dependency>
+   		<dependency>
+		 	<groupId>org.jeesl</groupId>
+		 	<artifactId>jeesl-jsf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.openfuxml</groupId>
+			<artifactId>ofx-jsf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+		</dependency>
+    
+		<!-- Logging -->
+		<dependency>
+	  		<groupId>org.slf4j</groupId>
+	  		<artifactId>slf4j-api</artifactId>
+	  	</dependency>
+		<dependency>
+	  		<groupId>org.slf4j</groupId>
+	  		<artifactId>slf4j-log4j12</artifactId>
+	  	</dependency>
+    
+		<!-- Batik -->
+		<dependency>
+			<groupId>org.apache.xmlgraphics</groupId>
+			<artifactId>batik-transcoder</artifactId>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>xalan</groupId>
+					<artifactId>xalan</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.xmlgraphics</groupId>
+			<artifactId>batik-codec</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Jakarta EE -->
+		<dependency>
+			<groupId>jakarta.enterprise</groupId>
+			<artifactId>jakarta.enterprise.cdi-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.ejb</groupId>
+			<artifactId>jboss-ejb-api_3.2_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.ws.rs</groupId>
+			<artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.el</groupId>
+			<artifactId>jboss-el-api_3.0_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.faces</groupId>
+			<artifactId>jboss-jsf-api_2.3_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.servlet</groupId>
+			<artifactId>jboss-servlet-api_4.0_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	 	
+		<!-- Rewrite -->
+		<dependency>
+		    <groupId>org.ocpsoft.rewrite</groupId>
+		    <artifactId>rewrite-servlet</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.ocpsoft.rewrite</groupId>
+		    <artifactId>rewrite-config-prettyfaces</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.ocpsoft.rewrite</groupId>
+			<artifactId>rewrite-integration-cdi</artifactId>
+		</dependency>
+
+		<!-- REST Version update to EAP7.0 versions, this is the shipped version with JBOSS EAP 7.0-->
+		<dependency>
+		    <groupId>org.jboss.resteasy</groupId>
+		    <artifactId>resteasy-client</artifactId>
+		    <scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.1</version>
+			<scope>test</scope>
+			<exclusions>
+            	<exclusion>
+            		<artifactId>commons-logging</artifactId>
+            		<groupId>commons-logging</groupId>
+            	</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- Cache -->
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
+		</dependency>
+				
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+		</dependency>
+		
+		<!-- Testing -->
+		<dependency>
+	 		<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<type>jar</type>
+			<scope>provided</scope>
+			<exclusions>
+        		<exclusion>
+        			<artifactId>commons-logging</artifactId>
+        			<groupId>commons-logging</groupId>
+        		</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<!-- Responsive -->
+		<dependency>
+		     <groupId>org.webjars</groupId>
+		     <artifactId>font-awesome</artifactId>
+		</dependency>
 	</dependencies>
-	
+
+	<build>
+		<pluginManagement>
+      		<plugins>
+      			<!-- Responsive -->
+      			<plugin>
+			        <groupId>org.jeesl</groupId>
+			        <artifactId>jeesl-maven</artifactId>
+			        <version>0.3.0-SNAPSHOT</version>
+				</plugin>
+				<plugin>
+					<groupId>org.jasig.maven</groupId>
+		            <artifactId>sass-maven-plugin</artifactId>
+		            <version>1.1.1</version>
+		            <executions>
+		                <execution>
+		                    <id>compile</id>
+		                    <phase>prepare-package</phase>
+		                    <goals><goal>update-stylesheets</goal></goals>
+		                </execution>
+		            </executions>
+		            <configuration>
+		                <resources>
+		                    <resource>
+		                        <source>
+		                            <directory>${basedir}/src/main/webapp/resources/scss</directory>
+		                        </source>
+		                        <destination>${basedir}/src/main/webapp/resources/css</destination>
+		                    </resource>
+		                    <resource>
+		                        <source>
+		                            <directory>${basedir}/../jeesl/jsf/src/main/resources/META-INF/resources/scss</directory>
+		                        </source>
+		                        <destination>${basedir}/src/main/webapp/resources/css</destination>
+		                    </resource>
+		                </resources>
+		                <sassOptions>
+		                    <cache>false</cache>
+		                    <always_update>true</always_update>
+		                </sassOptions>
+		            </configuration>
+	            </plugin>
+      		</plugins>
+		</pluginManagement>
+		<finalName>metachart</finalName>
+		<plugins>
+			<plugin>
+	       		<artifactId>maven-compiler-plugin</artifactId>
+	       		<configuration>
+	          		<source>1.8</source>
+	          		<target>1.8</target>
+	          		<encoding>${project.build.sourceEncoding}</encoding>
+	       		</configuration>
+           	</plugin>
+			<plugin>
+	            <artifactId>maven-war-plugin</artifactId>
+	            <version>2.1.1</version>
+	            <configuration>
+	            	<failOnMissingWebXml>false</failOnMissingWebXml>
+					<archive>     
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+						<manifestEntries>
+                     <Dependencies>org.hibernate</Dependencies>
+                  </manifestEntries>
+					</archive>
+	            </configuration>
+			</plugin>
+			<plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.1.0.Final</version>
+            </plugin>
+         	<plugin>
+				<groupId>org.jeesl</groupId>
+				<artifactId>jeesl-maven</artifactId>
+				<executions>
+					<execution>
+						<id>create-msgbundle</id>
+						<phase>compile</phase> 
+						<goals><goal>msgBundle2</goal></goals>
+						<configuration>
+							<msgSource>${basedir}/src/main/resources/${project.parent.artifactId}/msg/xml</msgSource>
+							<targetDir>${basedir}/src/main/resources/${project.parent.artifactId}/msg/properties</targetDir>
+							<prefixXml>${project.parent.artifactId}/msg/xml</prefixXml>
+						</configuration>
+					</execution>
+					<execution>
+						<id>create-prototype-css</id>
+						<phase>prepare-package</phase>
+						<goals><goal>createCssPrototype</goal></goals>
+						<configuration>
+							<cssName>metachartGenerated.css</cssName>
+							<colorDark>#607caf</colorDark>
+							<colorMedium>#6670CB</colorMedium>
+							<colorLight>#bdbedc</colorLight>
+							<log>WARN</log>
+						</configuration>
+					</execution>
+					<execution>
+						<id>check-xhtml</id>
+						<phase>prepare-package</phase>
+						<goals><goal>parseXhtml</goal></goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+	        	<artifactId>maven-resources-plugin</artifactId>
+	        	<version>2.5</version>
+        		<executions>
+          			<execution>
+            			<id>copy-resources-composition</id>
+            			<phase>prepare-package</phase>
+            			<goals>
+              				<goal>copy-resources</goal>
+            			</goals>
+            			<configuration>
+	              			<outputDirectory>${project.build.directory}/classes/composition.metachart-war</outputDirectory>
+	              			<resources>          
+	                			<resource>
+	                  				<directory>src/main/webapp/WEB-INF/composition</directory>
+	                  				<filtering>true</filtering>
+	                			</resource>
+	              			</resources>              
+	            		</configuration>            
+          			</execution>
+          			<execution>
+            			<id>copy-java-resources-showcase</id>
+            			<phase>prepare-package</phase>
+            			<goals>
+              				<goal>copy-resources</goal>
+            			</goals>
+            			<configuration>
+	              			<outputDirectory>${project.build.directory}/classes</outputDirectory>
+	              			<resources>          
+	                			<resource>
+	                  				<directory>src/main/java</directory>
+	                  				<filtering>true</filtering>
+	                			</resource>
+	              			</resources>              
+	            		</configuration>            
+          			</execution>
+				</executions>
+      		</plugin>
+      		<plugin>
+				<groupId>net.sf.exlp</groupId>
+				<artifactId>exlp-maven</artifactId>
+				<executions>
+					<execution>
+						<id>mvn-ignore-versions</id>
+						<phase>process-resources</phase> 
+						<goals><goal>mvnVersionIgnore</goal></goals>
+						<configuration>
+	              			<log>WARN</log>
+	              			<files>
+							  <param>exlp/maven/exlp-versions.xml</param>
+								<!-- <param>ahtutils/maven/ahtutils-versions.xml</param> -->
+							</files>
+							<saveTo>${basedir}/src/main/resources/metachart/maven/ignore-versions.xml</saveTo>
+	              		</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+   
+   	<distributionManagement>
+		<repository>
+			<id>aht-releases</id>
+			<name>Internal Releases</name>
+			<url>https://www.aht-group.com/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>aht-snapshots</id>
+			<name>Internal Snapshots</name>
+			<url>https://www.aht-group.com/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+   
+   <repositories>
+		<repository>
+			<id>aht.3rd</id>
+			<name>AHT Nexus Third Party</name>
+			<url>https://www.aht-group.com/nexus/content/repositories/thirdparty</url>
+			<releases><enabled>true</enabled></releases>
+			<snapshots><enabled>true</enabled></snapshots>
+		</repository>
+		<repository>
+			<id>sonatype.snapshot</id>
+			<name>Sonatype Snapshot Repository</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<releases><enabled>false</enabled></releases>
+			<snapshots><enabled>true</enabled></snapshots>
+		</repository>
+		<repository>
+            <id>redhat.ga</id>
+            <name>JBoss Repository</name>
+            <url>https://maven.repository.redhat.com/ga</url>
+            <releases><enabled>true</enabled></releases>
+			<snapshots><enabled>false</enabled></snapshots>
+        </repository>
+    </repositories>
+   
+	<profiles>
+		<profile>
+     		<id>ram</id>
+     		<build>
+     			<directory>${my.build.directory}</directory>
+     		</build>
+   	</profile>
+		<profile>
+			<id>only-eclipse</id>
+			<activation><property><name>m2e.version</name></property></activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.eclipse.m2e</groupId>
+							<artifactId>lifecycle-mapping</artifactId>
+							<version>1.0.0</version>
+							<configuration>
+								<lifecycleMappingMetadata>
+									<pluginExecutions>
+			      						<pluginExecution>
+		                					<pluginExecutionFilter>
+	                  						<groupId>org.apache.maven.plugins</groupId>
+	                  						<artifactId>maven-enforcer-plugin</artifactId>
+	                  						<versionRange>[1.0.0,)</versionRange>
+	                  						<goals><goal>enforce</goal></goals>
+		                					</pluginExecutionFilter>
+		                					<action><ignore /></action>
+		              					</pluginExecution>
+		              					<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.jeesl</groupId>
+												<artifactId>jeesl-maven</artifactId>
+												<versionRange>[0.2.6-SNAPSHOT,)</versionRange>
+												<goals><goal>createSeamSecurity</goal><goal>msgBundle</goal><goal>msgBundle2</goal></goals>
+											</pluginExecutionFilter>
+											<action><ignore></ignore></action>
+										</pluginExecution>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>net.sf.exlp</groupId>
+												<artifactId>exlp-maven</artifactId>
+												<versionRange>[0.1.1,)</versionRange>
+												<goals><goal>mvnVersionIgnore</goal></goals>
+											</pluginExecutionFilter>
+											<action><ignore></ignore></action>
+										</pluginExecution>
+									</pluginExecutions>
+								</lifecycleMappingMetadata>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
 </project>
