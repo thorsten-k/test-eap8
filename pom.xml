@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.kisner</groupId>
-	<artifactId>wareap8</artifactId>
+	<artifactId>eap8war</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>WAR EAP8 Test</name>
+	<name>EAP8 WAR Test</name>
    
 	<properties>
 	  	<my.build.directory>target</my.build.directory>
@@ -56,7 +56,7 @@
       		</plugins>
 		</pluginManagement>
 		
-		<finalName>wareap8</finalName>
+		<finalName>eap8war</finalName>
 		<plugins>
 			<plugin>
 	       		<artifactId>maven-compiler-plugin</artifactId>

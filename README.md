@@ -15,3 +15,11 @@ EAP-8 requires Java 11, project settings are defined, but command line needs to 
 2. Check versions of beans.xml
 3. Check versions of faces-config.xml
 4. Check forwarding of index.html
+
+## Migration Guide
+
+### pom.xml
+
+- wildfly-maven-plugin to 4.0.0.Final
+- maven-compiler-plugin to 3.10.1
+- maven-war-plugin to 3.3.2
