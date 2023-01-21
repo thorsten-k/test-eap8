@@ -8,9 +8,9 @@
 		<version>0.0.3-SNAPSHOT</version>
 	</parent>
 
-   <artifactId>metachart-showcase</artifactId>
+   <artifactId>wareap8</artifactId>
    <packaging>war</packaging>
-   <name>MC - Showcase</name>
+   <name>WAR EAP8 Test</name>
    
 	<properties>
 	  	<my.build.directory>target</my.build.directory>
