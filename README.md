@@ -22,11 +22,13 @@ EAP-8 requires Java 11, project settings are defined, but command line needs to 
 
 With jboss-cli.sh
 
-		module add --name=org.postgres --resources=postgresql-42.2.5.jar --dependencies=javax.api,javax.transaction.api
-		/subsystem=datasources/jdbc-driver=postgres:add(driver-name="postgres",driver-module-name="org.postgres",driver-class-name=org.postgresql.Driver)
-		data-source add --jndi-name=java:/EapDs --name=EapDs --connection-url=jdbc:postgresql://localhost:30015/eap8 --driver-name=postgres --user-name=eap8 --password=jswnevkjnwEGKJNSKIAJNEV
+
+		module add --name=org.postgresql --resources=/Users/thorsten/.m2/repository/org/postgresql/postgresql/42.5.1/postgresql-42.5.1.jar --dependencies=javax.api,javax.transaction.api
+		/subsystem=datasources/jdbc-driver=postgresql:add(driver-name="postgresql",driver-module-name="org.postgresql",driver-class-name=org.postgresql.Driver)
+		data-source add --jndi-name=java:/EapDs --name=EapDs --connection-url=jdbc:postgresql://localhost:30015/eap8 --driver-name=postgresql --user-name=eap8 --password=jswnevkjnwEGKJNSKIAJNEV
 		
-Deployment without error, but table for DemoEntity is not created :-(
+- add org.postgresql in hibernate/module.xml
+
 
 ## Migration Guide
 

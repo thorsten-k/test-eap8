@@ -7,14 +7,13 @@
        <jta-data-source>java:/EapDs</jta-data-source>
        
        <properties>
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
-			<property name="hibernate.max_fetch_depth" value="0" />
+			<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
 			
-			
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/> 
 			
 	
 			<!-- Hibernate SQL Formatting-->
-			<property name="hibernate.show_sql" value="false"/> <!-- Default is 'create' or 'false', set to 'true' for debugging -->
+			<property name="hibernate.show_sql" value="true"/> <!-- Default is 'create' or 'false', set to 'true' for debugging -->
 			<property name="hibernate.format_sql" value="false"/> <!-- Default is 'false', set to 'true' for debugging -->
 <!--       	<property name="hibernate.use_sql_comments" value="true"/> -->
 <!--       	<property name="hibernate.generate_statistics" value="true"/> -->
