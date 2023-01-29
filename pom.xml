@@ -34,25 +34,49 @@
 
 	<dependencies>
 		
-		<!-- JSF UI 
-   		<dependency>  
-   			<groupId>org.primefaces</groupId>  
-   			<artifactId>primefaces</artifactId>
-  			<version>12.0.0</version>
-   		</dependency> -->
+		<!-- Jakarta EE -->
+
+		<!-- https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api -->
+<dependency>
+    <groupId>jakarta.persistence</groupId>
+    <artifactId>jakarta.persistence-api</artifactId>
+     <version>3.1.0</version>
+    <scope>provided</scope>
+</dependency>
+
+		
+
+		<!-- https://mvnrepository.com/artifact/org.wildfly.core/wildfly-controller-client -->
+		<dependency>
+			<groupId>org.wildfly.core</groupId>
+			<artifactId>wildfly-controller-client</artifactId>
+			<version>19.0.1.Final</version>
+			<scope>test</scope>
+		</dependency>
+		
+		
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<scope>test</scope>
+		</dependency>
    		
 	</dependencies>
 
 	<build>
 		<pluginManagement>
       		<plugins>
-      			<!-- Responsive -->
       			<plugin>
 			        <groupId>org.jeesl</groupId>
 			        <artifactId>jeesl-maven</artifactId>
 			        <version>0.3.0-SNAPSHOT</version>
 				</plugin>
-				
       		</plugins>
 		</pluginManagement>
 		
@@ -94,7 +118,7 @@
 		
 	</distributionManagement>
    
-   <repositories>
+	<repositories>
 		<repository>
 			<id>sonatype.snapshot</id>
 			<name>Sonatype Snapshot Repository</name>
@@ -102,7 +126,7 @@
 			<releases><enabled>false</enabled></releases>
 			<snapshots><enabled>true</enabled></snapshots>
 		</repository>
-    </repositories>
+	</repositories>
    
 	<profiles>
 		<profile>
