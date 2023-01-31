@@ -9,6 +9,12 @@ EAP-8 requires Java 11, project settings are defined, but command line needs to 
 		/usr/libexec/java_home -V
 		export JAVA_HOME=$(/usr/libexec/java_home -v11.0.17)
 
+## Web Resources
+
+- https://www.wildfly.org/news/2022/11/09/WildFly27-Final-Released/
+- http://www.mastertheboss.com/java-ee/jakarta-ee/jakarta-ee-10-is-on-its-way-with-wildfly-27/
+- http://www.mastertheboss.com/jbossas/jboss-eap/what-is-the-difference-between-jboss-eap-wildfly-and-jboss-as/
+
 ## ToDo
 
 1. Check versions of web.xml
