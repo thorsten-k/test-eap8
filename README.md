@@ -22,21 +22,6 @@ EAP-8 requires Java 11, project settings are defined, but command line needs to 
 3. Check versions of faces-config.xml
 4. Check forwarding of index.html
 
-## Working on ... persistence.xml
-
-- JPA: jakarta.persistence:jakarta.persistence-api:3.1.0
-
-With jboss-cli.sh
-
-
-		module add --name=org.postgresql.jdbc --resources=/Users/thorsten/.m2/repository/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar --dependencies=javax.api,javax.transaction.api
-		/subsystem=datasources/jdbc-driver=postgresql:add(driver-name="postgresql",driver-module-name="org.postgresql.jdbc",driver-class-name=org.postgresql.Driver)
-		data-source add --jndi-name=java:/Eap8Ds --name=Eap8Ds --connection-url=jdbc:postgresql://localhost:30015/eap8 --driver-name=postgresql --user-name=eap8 --password=jswnevkjnwEGKJNSKIAJNEV
-		
-- add org.postgresql in hibernate/module.xml
-
-
-
 ## Migration Guide
 
 ### pom.xml
@@ -46,4 +31,18 @@ With jboss-cli.sh
 - maven-war-plugin to 3.3.2
 - JPA: jakarta.persistence:jakarta.persistence-api:3.1.0
 
+### persistence.xml
+
+- Apply version of eap8/persistence.xml
+
+## Solved
+
+### JBoss EAP Configuration
+
+The manual configruation below is included in JeeslJbossEap80Configurator
+
+		module add --name=org.postgresql.jdbc --resources=/Users/thorsten/.m2/repository/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar --dependencies=javax.api,javax.transaction.api
+		/subsystem=datasources/jdbc-driver=postgresql:add(driver-name="postgresql",driver-module-name="org.postgresql.jdbc",driver-class-name=org.postgresql.Driver)
+		data-source add --jndi-name=java:/Eap8Ds --name=Eap8Ds --connection-url=jdbc:postgresql://localhost:30015/eap8 --driver-name=postgresql --user-name=eap8 --password=jswnevkjnwEGKJNSKIAJNEV
+		
 
