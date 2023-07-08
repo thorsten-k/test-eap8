@@ -3,9 +3,8 @@ package de.kisner.eap8.web.mbean;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-import javax.inject.Named;
-
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 
 @Named @ViewScoped
 public class WelcomeBean implements Serializable

@@ -3,16 +3,12 @@
 			xsi:schemalocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
 			version="3.0">
     <persistence-unit name="eap8">
-       <description>Example persistence.xml for JBoss EAP8 based on jeesl projects</description>
        <jta-data-source>java:jboss/datasources/Eap8Ds</jta-data-source>
+       <description>Example persistence.xml for JBoss EAP8 based on jeesl projects</description>
        
        <properties>
 			<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
-			
-			<!--  
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/> 
-			-->
-	
+				
 			<!-- Hibernate SQL Formatting-->
 			<property name="hibernate.show_sql" value="true"/> <!-- Default is 'create' or 'false', set to 'true' for debugging -->
 			<property name="hibernate.format_sql" value="false"/> <!-- Default is 'false', set to 'true' for debugging -->

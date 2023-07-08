@@ -14,6 +14,8 @@ EAP-8 requires Java 11, project settings are defined, but command line needs to 
 - https://www.wildfly.org/news/2022/11/09/WildFly27-Final-Released/
 - http://www.mastertheboss.com/java-ee/jakarta-ee/jakarta-ee-10-is-on-its-way-with-wildfly-27/
 - http://www.mastertheboss.com/jbossas/jboss-eap/what-is-the-difference-between-jboss-eap-wildfly-and-jboss-as/
+- beans.xml https://www.mastertheboss.com/jboss-frameworks/cdi/configuring-beans-xml-file/
+- EE8-EE10 https://ralph.blog.imixs.com/2022/01/17/jakarta-ee8-ee9-ee9-1-what/
 
 ## ToDo
 
