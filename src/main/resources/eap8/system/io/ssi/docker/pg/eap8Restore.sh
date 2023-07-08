@@ -23,7 +23,7 @@ psql -U postgres -h localhost -d eap8 -c "CREATE EXTENSION pg_stat_statements;"
 psql -U postgres -h localhost -d eap8 -c "GRANT pg_monitor TO eap8;"
 
 date
-# pg_restore -U postgres -h localhost -d eap8 --no-owner -j 4 --no-privileges --role=jeesl -n public "/var/lib/postgresql/dump/EAP8.sql"
+# pg_restore -U postgres -h localhost -d eap8 --no-owner -j 4 --no-privileges --role=jeesl -n public "/var/lib/postgresql/dump/eap8.sql"
 
 psql -U postgres -h localhost -c "ALTER ROLE eap8 CONNECTION LIMIT -1;"
 
