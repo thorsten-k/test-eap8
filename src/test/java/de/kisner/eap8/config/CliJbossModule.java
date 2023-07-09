@@ -1,6 +1,5 @@
 package de.kisner.eap8.config;
 
-
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -15,9 +14,6 @@ import org.slf4j.LoggerFactory;
 public class CliJbossModule
 {
 	final static Logger logger = LoggerFactory.getLogger(CliJbossModule.class);
-	
-	
-	
 	
 	public CliJbossModule() throws UnknownHostException
 	{
