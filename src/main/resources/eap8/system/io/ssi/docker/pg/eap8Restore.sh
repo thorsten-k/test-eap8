@@ -16,7 +16,7 @@ psql -U postgres -h localhost -c "CREATE DATABASE eap8 OWNER eap8 ENCODING 'UTF8
 psql -U postgres -h localhost -c "ALTER ROLE eap8 CONNECTION LIMIT 0;"
 
 psql -U postgres -h localhost -d eap8 -c "REVOKE CREATE ON SCHEMA public FROM PUBLIC;"
-psql -U postgres -h localhost -d eap8 -c "GRANT CREATE ON SCHEMA public TO jeesl;"
+psql -U postgres -h localhost -d eap8 -c "GRANT CREATE ON SCHEMA public TO eap8;"
 psql -U postgres -h localhost -d eap8 -c "CREATE EXTENSION postgis;"
 psql -U postgres -h localhost -d eap8 -c "CREATE EXTENSION pg_stat_statements;"
 
