@@ -10,6 +10,7 @@ public interface EapFacade extends JeeslFacade
 	public enum LocaleCode {en,de}
 	public static String[] defaults = {"en"};
 	
+	public enum IoSsiSystemCode {eap}
 	public enum IoSsiCredentialDeepl {free}
 	
 	public enum TenantRealmCode {ssi,user};
