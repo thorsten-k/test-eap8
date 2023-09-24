@@ -11,7 +11,7 @@ public interface EapFacade extends JeeslFacade
 	public static String[] defaults = {"en"};
 	
 	public enum IoSsiSystemCode {eap}
-	public enum IoSsiCredentialDeepl {free}
+//	public enum IoSsiCredentialDesepl {xx}
 	
 	public enum TenantRealmCode {ssi,user};
 	
