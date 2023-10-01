@@ -1,4 +1,4 @@
-package de.kisner.eap8.interfaces.facade;
+package de.kisner.test.eap.interfaces.facade;
 
 import org.jeesl.interfaces.facade.JeeslFacade;
 

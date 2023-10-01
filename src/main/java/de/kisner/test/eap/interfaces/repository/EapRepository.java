@@ -1,4 +1,4 @@
-package de.kisner.eap8.interfaces.repository;
+package de.kisner.test.eap.interfaces.repository;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

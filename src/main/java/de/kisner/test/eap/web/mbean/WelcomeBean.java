@@ -1,4 +1,4 @@
-package de.kisner.eap8.web.mbean;
+package de.kisner.test.eap.web.mbean;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

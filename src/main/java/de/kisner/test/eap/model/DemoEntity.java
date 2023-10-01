@@ -1,4 +1,4 @@
-package de.kisner.eap8.model;
+package de.kisner.test.eap.model;
 
 import java.io.Serializable;
 
