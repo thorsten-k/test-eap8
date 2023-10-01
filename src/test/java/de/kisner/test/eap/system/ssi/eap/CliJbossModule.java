@@ -1,4 +1,4 @@
-package de.kisner.eap8.config;
+package de.kisner.test.eap.system.ssi.eap;
 
 import java.io.IOException;
 import java.net.InetAddress;
