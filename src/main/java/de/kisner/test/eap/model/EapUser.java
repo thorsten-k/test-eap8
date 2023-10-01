@@ -1,13 +1,11 @@
 package de.kisner.test.eap.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.jeesl.interfaces.model.system.security.user.JeeslUser;
-import org.jeesl.interfaces.model.system.security.user.pwd.JeeslUserPasswordSalt;
-import org.jeesl.interfaces.model.system.security.user.pwd.JeeslWithPwd;
 import org.jeesl.interfaces.qualifier.er.EjbErNode;
 import org.jeesl.model.ejb.system.security.access.SecurityRole;
 import org.jeesl.model.ejb.system.security.user.SecurityUser;
@@ -23,7 +21,7 @@ import jakarta.persistence.UniqueConstraint;
 @Entity
 @DiscriminatorValue("eap")
 @EjbErNode(name="User")
-public class EapUser extends SecurityUser implements JeeslWithPwd,JeeslUserPasswordSalt,JeeslUser<SecurityRole>
+public class EapUser extends SecurityUser implements Serializable
 {
 	public static final long serialVersionUID=1;
 	public static final long devId=1;

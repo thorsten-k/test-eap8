@@ -7,7 +7,7 @@
        <description>Example persistence.xml for JBoss EAP8 based on jeesl projects</description>
        
        <properties>
-			<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<property name="jakarta.persistence.schema-generation.database.action" value="none"/>
 				
 			<!-- Hibernate SQL Formatting-->
 			<property name="hibernate.show_sql" value="true"/> <!-- Default is 'create' or 'false', set to 'true' for debugging -->

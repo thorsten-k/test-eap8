@@ -41,9 +41,8 @@ public class CliSecurityMenu
 		
 		for(SecurityMenu m : list)
 		{
-			logger.info(m.toString()+" "+m.getView().getCode());
+			System.out.println(m.toString()+" "+m.getView().getCode());
 			if(Objects.isNull(m.getParent())) {logger.info(m.toString()+" "+m.getView().getCode());}
-//			SecurityView v = fUtils.find(SecurityView.class,m.getView());
 			SecurityMenu x = fUtils.find(SecurityMenu.class,m.getId());
 //			try {TimeUnit.SECONDS.sleep(10);} catch (InterruptedException e) {}
 		}
@@ -54,7 +53,7 @@ public class CliSecurityMenu
 		Configuration config = EapBootstrap.init();
 		CliSecurityMenu test =  new CliSecurityMenu(EapBootstrap.facadeLookup(config));
 		
-		test.find();
-//		test.list();
+//		test.find();
+		test.list();
 	}
 }

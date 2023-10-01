@@ -11,12 +11,12 @@ import net.sf.exlp.exception.ExlpConfigurationException;
 import net.sf.exlp.util.config.ConfigLoader;
 import net.sf.exlp.util.io.ExlpCentralConfigPointer;
 import net.sf.exlp.util.io.LoggerInit;
-import net.sf.exlp.util.xml.JaxbUtil;
+import net.sf.exlp.util.xml.jk.JaxbUtil;
 
 public class EapBootstrap
 {
 	final static Logger logger = LoggerFactory.getLogger(EapBootstrap.class);
-	public final static String xmlConfig = "jeesl/showcase/config/jeesl.xml";
+	public final static String xmlConfig = "test-eap/system/property/eap.xml";
 
 	private static Configuration config;
 
@@ -34,9 +34,9 @@ public class EapBootstrap
 
 	public static Configuration init(String configFile)
 	{
-		LoggerInit loggerInit = new LoggerInit("log4j.xml");
-		loggerInit.addAltPath("jeesl/showcase/config");
-		loggerInit.init();
+//		LoggerInit loggerInit = new LoggerInit("log4j.xml");
+//		loggerInit.addAltPath("jeesl/showcase/config");
+//		loggerInit.init();
 //		JaxbUtil.setNsPrefixMapper(new JeeslNsPrefixMapper());
 
 		ConfigLoader cl = ConfigLoader.instance();

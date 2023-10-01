@@ -58,11 +58,23 @@
 		<dependency>
 			<groupId>org.jeesl</groupId>
 			<artifactId>jeesl-ejb</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>net.sf.exlp</groupId>
+					<artifactId>exlp-xml</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.jeesl</groupId>
 			<artifactId>jeesl-util</artifactId>
 			<scope>test</scope>
+		</dependency>
+				<dependency>
+			<groupId>net.sf.exlp</groupId>
+			<artifactId>exlp-xml</artifactId>
+			<classifier>jakarta</classifier>
+			<scope>compile</scope>
 		</dependency>
 
 		<!-- PostgreSQL -->
@@ -83,6 +95,30 @@
 			<artifactId>wildfly-controller-client</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- JBoss EAP 7 -->
+		<dependency>
+    		<groupId>org.wildfly</groupId>
+    		<artifactId>wildfly-ejb-client-bom</artifactId>
+			<type>pom</type>
+			<scope>test</scope>
+		</dependency>
+ 		<dependency>	<!-- This seems to be required for JBoss 7.3 (not in 7.1) -->
+        	<groupId>org.hibernate.javax.persistence</groupId>
+         	<artifactId>hibernate-jpa-2.0-api</artifactId>
+         	<scope>test</scope>
+      	</dependency>
+      	<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>4.0.0</version>
+            <scope>test</scope>
+        </dependency>
 		
 		<!-- Apache Commons -->
 		<dependency>
@@ -107,25 +143,44 @@
     		</exclusions>
 		</dependency>
 		<dependency>
+        	<groupId>commons-beanutils</groupId>
+        	<artifactId>commons-beanutils</artifactId>
+        	<scope>test</scope>
+        	<exclusions>
+        		<exclusion>
+        			<artifactId>commons-logging</artifactId>
+        			<groupId>commons-logging</groupId>
+        		</exclusion>
+        	</exclusions>
+    	</dependency>
+		<dependency>
    			<groupId>org.apache.commons</groupId>
    			<artifactId>commons-lang3</artifactId>
    			<scope>provided</scope>
 		</dependency>
 		
+				<!-- Deprecated -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
 		<!-- Logging -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
+	    <groupId>org.apache.logging.log4j</groupId>
+	    <artifactId>log4j-api</artifactId>
+	    <version>2.15.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<scope>test</scope>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-core</artifactId>
+		    <version>2.15.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<scope>test</scope>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-slf4j-impl</artifactId>
+		    <version>2.15.0</version>
 		</dependency>
    		
 	</dependencies>
@@ -142,6 +197,16 @@
 		</pluginManagement>
 		<finalName>eap</finalName>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
 			<plugin>
 	            <groupId>org.apache.maven.plugins</groupId>
   				<artifactId>maven-war-plugin</artifactId>
