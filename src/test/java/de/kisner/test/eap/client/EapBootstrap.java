@@ -1,6 +1,6 @@
 package de.kisner.test.eap.client;
 
-import org.apache.commons.configuration.Configuration;
+import org.apache.commons.configuration2.Configuration;
 import org.jeesl.api.facade.JeeslFacadeLookup;
 import org.jeesl.controller.facade.lookup.JeeslEap71FacadeLookup;
 import org.slf4j.Logger;
@@ -39,15 +39,16 @@ public class EapBootstrap
 		loggerInit.init();
 //		JaxbUtil.setNsPrefixMapper(new JeeslNsPrefixMapper());
 
+		ConfigLoader cl = ConfigLoader.instance();
 		try
 		{
 			ExlpCentralConfigPointer ccp = ExlpCentralConfigPointer.instance(EapFacade.IoSsiSystemCode.eap).jaxb(JaxbUtil.instance());
-			ConfigLoader.add(ccp.toFile("showcase"));
+			cl.add(ccp.toFile("client").toPath());
 		}
-		catch (ExlpConfigurationException e) {logger.debug("No additional "+ExlpCentralConfigPointer.class.getSimpleName()+" because "+e.getMessage());}
-		ConfigLoader.add(configFile);
-
-		config = ConfigLoader.init();
+		catch (ExlpConfigurationException e) {logger.debug("No additional "+ExlpCentralConfigPointer.class.getSimpleName()+" "+e.getMessage());}
+		cl.addS(xmlConfig);
+		
+		config = cl.combine();
 
 		logger.debug("Config and Logger initialized");
 		return config;

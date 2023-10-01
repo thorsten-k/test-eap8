@@ -2,7 +2,7 @@
 			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 			xsi:schemalocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
 			version="3.0">
-    <persistence-unit name="eap8">
+    <persistence-unit name="eap">
        <jta-data-source>java:jboss/datasources/EapDs</jta-data-source>
        <description>Example persistence.xml for JBoss EAP8 based on jeesl projects</description>
        

@@ -71,6 +71,11 @@
 			<artifactId>postgresql</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+		    <groupId>org.flywaydb</groupId>
+		    <artifactId>flyway-core</artifactId>
+		    <scope>compile</scope>
+		</dependency>
 		
 		<!-- JBoss EAP Wildfly -->
 		<dependency>
@@ -90,6 +95,21 @@
         			<groupId>commons-logging</groupId>
         		</exclusion>
         	</exclusions>
+		</dependency>
+		 <dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-configuration2</artifactId>
+			<exclusions>
+    			<exclusion>
+    				<artifactId>commons-logging</artifactId>
+    				<groupId>commons-logging</groupId>
+    			</exclusion>
+    		</exclusions>
+		</dependency>
+		<dependency>
+   			<groupId>org.apache.commons</groupId>
+   			<artifactId>commons-lang3</artifactId>
+   			<scope>provided</scope>
 		</dependency>
 		
 		<!-- Logging -->
@@ -120,18 +140,8 @@
 				</plugin>
       		</plugins>
 		</pluginManagement>
-		
 		<finalName>eap</finalName>
 		<plugins>
-			<plugin>
-	       		<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-	       		<configuration>
-	          		<source>11</source>
-	          		<target>11</target>
-	          		<encoding>${project.build.sourceEncoding}</encoding>
-	       		</configuration>
-           	</plugin>
 			<plugin>
 	            <groupId>org.apache.maven.plugins</groupId>
   				<artifactId>maven-war-plugin</artifactId>
@@ -175,6 +185,57 @@
      		<build>
      			<directory>${my.build.directory}</directory>
      		</build>
+		</profile>
+		<profile>
+			<id>jeesl</id>
+			<build>
+				<plugins>
+					<plugin>
+					    <artifactId>maven-resources-plugin</artifactId>
+					    <executions>
+					        <execution>
+					            <id>copy-entities</id>
+					            <phase>generate-sources</phase>
+					            <goals><goal>copy-resources</goal></goals>
+					            <configuration>
+					                <outputDirectory>${basedir}/src/main/java/org/jeesl/model/ejb</outputDirectory>
+					                <overwrite>true</overwrite>
+					                <resources>
+					                    <resource>
+					                        <directory>../rmmv/entities/src/main/java/org/jeesl/model/ejb</directory>
+					                        <includes>
+					                            <include>io/locale/*.java</include>
+					                            <include>io/graphic/core/*.java</include>
+					                            <include>io/cms/**/*.java</include>
+					                            <include>io/fr/**/*.java</include>
+					                            <include>io/ssi/core/*.java</include>
+					                            <include>system/security/**/*.java</include>
+					                        </includes>
+					                    </resource>   
+					                </resources>
+					            </configuration>
+					        </execution>
+					        <execution>
+					            <id>copy-flyway</id>
+					            <phase>generate-sources</phase>
+					            <goals><goal>copy-resources</goal></goals>
+					            <configuration>
+					                <outputDirectory>${basedir}/src/main/resources/test-eap</outputDirectory>
+					                <overwrite>true</overwrite>
+					                <resources>
+					                    <resource>
+					                        <directory>../rmmv/entities/src/main/resources/rmmv/</directory>
+					                        <includes>
+					                            <include>system/io/db/flyway/0.1/0.1.4/*.sql</include>
+					                        </includes>
+					                    </resource>   
+					                </resources>
+					            </configuration>
+					        </execution>
+					    </executions>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 		<profile>
 			<id>only-eclipse</id>
