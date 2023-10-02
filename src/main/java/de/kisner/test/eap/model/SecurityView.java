@@ -23,49 +23,13 @@ public class SecurityView implements Serializable
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	 public long getId() {return id;}
-	 public void setId(long id) {this.id = id;}
-
-
+	public long getId() {return id;}
+	public void setId(long id) {this.id = id;}
 
 	@NotNull
 	private String code;
-	 public String getCode() {return code;}
-	 public void setCode(String code) {this.code = code;}
-
-
-	private Boolean accessPublic;
-	 public Boolean getAccessPublic() {return accessPublic;}
-	 public void setAccessPublic(Boolean accessPublic) {this.accessPublic = accessPublic;}
-
-	private Boolean accessLogin;
-	 public Boolean getAccessLogin() {return accessLogin;}
-	 public void setAccessLogin(Boolean accessLogin) {this.accessLogin = accessLogin;}
-
-	private Boolean redirect;
-	 public Boolean getRedirect() {return redirect;}
-	 public void setRedirect(Boolean redirect) {this.redirect = redirect;}
-
-	private Boolean maintenance;
-	 public Boolean getMaintenance() {return maintenance;}
-	 public void setMaintenance(Boolean maintenance) {this.maintenance = maintenance;}
-
-	private String packageName;
-	 public String getPackageName() {return packageName;}
-	 public void setPackageName(String packageName) {this.packageName = packageName;}
-
-	private String viewPattern;
-	 public String getViewPattern() {return viewPattern;}
-	 public void setViewPattern(String viewPattern) {this.viewPattern = viewPattern;}
-
-	private String urlMapping;
-	 public String getUrlMapping() {return urlMapping;}
-	 public void setUrlMapping(String urlMapping) {this.urlMapping = urlMapping;}
-
-	private String urlBase;
-	 public String getUrlBase() {return urlBase;}
-	 public void setUrlBase(String urlBase) {this.urlBase = urlBase;}
-
+	public String getCode() {return code;}
+	public void setCode(String code) {this.code = code;}
 
 	@Override public boolean equals(Object object){return (object instanceof SecurityView) ? id == ((SecurityView) object).getId() : (object == this);}
 	@Override public int hashCode() {return new HashCodeBuilder(17,53).append(id).toHashCode();}
