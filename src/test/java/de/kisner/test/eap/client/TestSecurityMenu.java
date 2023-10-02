@@ -22,7 +22,7 @@ public class TestSecurityMenu
 
 	private TestSecurityMenu(JeeslFacadeLookup jfl) throws NamingException
 	{
-		fUtils = jfl.lookup(EapFacade.class);
+		fUtils = EapBootstrap.lookup(EapFacade.class);
 	}
 
 	public void find() throws JeeslNotFoundException

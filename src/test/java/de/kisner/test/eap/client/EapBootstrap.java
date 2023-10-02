@@ -1,5 +1,11 @@
 package de.kisner.test.eap.client;
 
+import java.util.Properties;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 import org.apache.commons.configuration2.Configuration;
 import org.jeesl.api.facade.JeeslFacadeLookup;
 import org.jeesl.controller.facade.lookup.JeeslEap71FacadeLookup;
@@ -61,16 +67,28 @@ public class EapBootstrap
 		return eap71Lookup;
 	}
 
-//	public static <T extends Object> T rest(Class<T> c) {return rest(c,ConfigKey.netRestUrlLocal);}
-//	public static <T extends Object> T rest(Class<T> c, String codeUrl)
-//	{
-//		String restUser = config.getString("net.rest.user","user");
-//		String restPwd = config.getString("net.rest.local.password","password");
-//
-//		ResteasyClient client = new ResteasyClientBuilder().build();
-//		client.register(new BasicAuthentication(restUser,restPwd));
-//		client.register(new RestLogger());
-//		ResteasyWebTarget target = client.target(RestUrlDelay.getUrl(config,codeUrl));
-//		return target.proxy(c);
-//	}
+	@SuppressWarnings("unchecked")
+	public static <F> F lookup(Class<F> facade) throws NamingException
+	{
+		Context context = buildContext();
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append("ejb:");
+		sb.append("/eap");
+		sb.append("/").append(facade.getSimpleName()).append("Bean");
+		sb.append("!").append(facade.getName());	
+		logger.info("Looking up: "+sb.toString());
+		
+		return (F)context.lookup(sb.toString());
+	}
+	
+	private static Context buildContext() throws NamingException
+	{
+		Properties properties = new Properties();
+		properties.put(Context.INITIAL_CONTEXT_FACTORY,  "org.wildfly.naming.client.WildFlyInitialContextFactory");
+		properties.put(Context.PROVIDER_URL, String.format("%s://%s:%d", "remote+http", "localhost", 8080));
+		properties.put("jboss.naming.client.ejb.context", true);
+		
+		return new InitialContext(properties);
+	}
 }
