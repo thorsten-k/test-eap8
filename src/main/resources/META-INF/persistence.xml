@@ -7,7 +7,8 @@
        <description>Example persistence.xml for JBoss EAP8 based on jeesl projects</description>
        
        <properties>
-			<property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+			<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<property name="jakarta.persistence.sql-load-script-source" value="/sql/flyway/V0.0.4-Bootstrap.sql"/>
 			
 			<!-- Hibernate Fetch Configuration -->
 			<property name="hibernate.max_fetch_depth" value="0" />

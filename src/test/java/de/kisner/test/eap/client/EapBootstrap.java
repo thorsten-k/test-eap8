@@ -17,31 +17,24 @@ public class EapBootstrap
 
 	public static void init()
 	{
-		
+		logger.info("Init");
 	}
 
 	@SuppressWarnings("unchecked")
 	public static <F> F lookup(Class<F> facade) throws NamingException
 	{
-		Context context = buildContext();
+		Properties properties = new Properties();
+		properties.put(Context.INITIAL_CONTEXT_FACTORY,  "org.wildfly.naming.client.WildFlyInitialContextFactory");
+		properties.put(Context.PROVIDER_URL, String.format("%s://%s:%d", "remote+http", "localhost", 8080));
+		properties.put("jboss.naming.client.ejb.context", true);
+		Context context = new InitialContext(properties);
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append("ejb:");
-		sb.append("/eap");
+		sb.append("ejb:/eap");
 		sb.append("/").append(facade.getSimpleName()).append("Bean");
 		sb.append("!").append(facade.getName());	
 		logger.info("Looking up: "+sb.toString());
 		
 		return (F)context.lookup(sb.toString());
-	}
-	
-	private static Context buildContext() throws NamingException
-	{
-		Properties properties = new Properties();
-		properties.put(Context.INITIAL_CONTEXT_FACTORY,  "org.wildfly.naming.client.WildFlyInitialContextFactory");
-		properties.put(Context.PROVIDER_URL, String.format("%s://%s:%d", "remote+http", "localhost", 8080));
-		properties.put("jboss.naming.client.ejb.context", true);
-		
-		return new InitialContext(properties);
 	}
 }

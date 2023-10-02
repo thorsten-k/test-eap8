@@ -57,33 +57,15 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
-		<!-- PostgreSQL -->
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-		    <groupId>org.flywaydb</groupId>
-		    <artifactId>flyway-core</artifactId>
-		    <scope>compile</scope>
-		</dependency>
 		
 		<!-- JBoss EAP Wildfly -->
-		<dependency>
-			<groupId>org.wildfly.core</groupId>
-			<artifactId>wildfly-controller-client</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- JBoss EAP 7 -->
 		<dependency>
     		<groupId>org.wildfly</groupId>
     		<artifactId>wildfly-ejb-client-bom</artifactId>
 			<type>pom</type>
 			<scope>test</scope>
 		</dependency>
- 		<dependency>	<!-- This seems to be required for JBoss 7.3 (not in 7.1) -->
+ <!--		<dependency>	 This seems to be required for JBoss 7.3 (not in 7.1) 
         	<groupId>org.hibernate.javax.persistence</groupId>
          	<artifactId>hibernate-jpa-2.0-api</artifactId>
          	<scope>test</scope>
@@ -93,42 +75,9 @@
             <artifactId>hibernate-core</artifactId>
             <scope>test</scope>
         </dependency>
-        
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>4.0.0</version>
-            <scope>test</scope>
-        </dependency>
-		<dependency>
-			<groupId>net.sf.exlp</groupId>
-			<artifactId>exlp-xml</artifactId>
-			<classifier>jakarta</classifier>
-			<scope>test</scope>
-		</dependency>
+        -->
+      
 		
-		<!-- Apache Commons 
-		<dependency>
-	 		<groupId>commons-configuration</groupId>
-			<artifactId>commons-configuration</artifactId>
-			<scope>test</scope>
-			<exclusions>
-        		<exclusion>
-        			<artifactId>commons-logging</artifactId>
-        			<groupId>commons-logging</groupId>
-        		</exclusion>
-        	</exclusions>
-		</dependency>
-		 <dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-configuration2</artifactId>
-			<exclusions>
-    			<exclusion>
-    				<artifactId>commons-logging</artifactId>
-    				<groupId>commons-logging</groupId>
-    			</exclusion>
-    		</exclusions>
-		</dependency> -->
 		<dependency>
         	<groupId>commons-beanutils</groupId>
         	<artifactId>commons-beanutils</artifactId>
@@ -145,29 +94,17 @@
    			<artifactId>commons-lang3</artifactId>
    			<scope>provided</scope>
 		</dependency>
-		
-		<!-- Deprecated 
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<scope>provided</scope>
-		</dependency> -->
-		
+
 		<!-- Logging -->
-		<dependency>
-	    <groupId>org.apache.logging.log4j</groupId>
-	    <artifactId>log4j-api</artifactId>
-	    <version>2.15.0</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.apache.logging.log4j</groupId>
-		    <artifactId>log4j-core</artifactId>
-		    <version>2.15.0</version>
-		</dependency>
 		<dependency>
 		    <groupId>org.apache.logging.log4j</groupId>
 		    <artifactId>log4j-slf4j-impl</artifactId>
 		    <version>2.15.0</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
 		</dependency>
    		
 	</dependencies>

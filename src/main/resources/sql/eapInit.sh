@@ -10,21 +10,13 @@ psql -U postgres -h localhost -c "DROP DATABASE IF EXISTS eap;"
 psql -U postgres -h localhost -c "DROP USER IF EXISTS eap;"
 
 psql -U postgres -h localhost -c "CREATE USER eap WITH PASSWORD 'tmp';"
-psql -U postgres -h localhost -c "ALTER USER eap WITH PASSWORD 'jswnevkjnwEGKJNSKIAJNEV';"
+psql -U postgres -h localhost -c "ALTER ROLE eap CONNECTION LIMIT 0;"
+psql -U postgres -h localhost -c "ALTER USER eap WITH PASSWORD 'eap';"
 
 psql -U postgres -h localhost -c "CREATE DATABASE eap OWNER eap ENCODING 'UTF8';"
-psql -U postgres -h localhost -c "ALTER ROLE eap CONNECTION LIMIT 0;"
-
 psql -U postgres -h localhost -d eap -c "REVOKE CREATE ON SCHEMA public FROM PUBLIC;"
-psql -U postgres -h localhost -d eap -c "GRANT CREATE ON SCHEMA public TO eap8;"
-psql -U postgres -h localhost -d eap -c "CREATE EXTENSION postgis;"
-psql -U postgres -h localhost -d eap -c "CREATE EXTENSION pg_stat_statements;"
-
-psql -U postgres -h localhost -d eap -c "GRANT pg_monitor TO eap8;"
-
-date
+psql -U postgres -h localhost -d eap -c "GRANT CREATE ON SCHEMA public TO eap;"
 
 psql -U postgres -h localhost -c "ALTER ROLE eap CONNECTION LIMIT -1;"
-date
 
 unset PGPASSWORD

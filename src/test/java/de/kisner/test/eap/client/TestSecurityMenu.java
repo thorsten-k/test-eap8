@@ -1,8 +1,5 @@
 package de.kisner.test.eap.client;
 
-import java.util.List;
-import java.util.Objects;
-
 import javax.naming.NamingException;
 
 import org.slf4j.Logger;
@@ -24,29 +21,15 @@ public class TestSecurityMenu
 
 	public void find()
 	{
-		SecurityMenu m = fUtils.find(SecurityMenu.class,2l);
+		logger.info(fUtils.find(SecurityMenu.class,1l).toString());
+		logger.info(fUtils.find(SecurityMenu.class,2l).toString());
 	}
 	
-	public void list()
-	{
-		List<SecurityMenu> list = fUtils.all(SecurityMenu.class);
-		logger.info(SecurityMenu.class.getSimpleName()+": "+list.size());
-		
-		for(SecurityMenu m : list)
-		{
-			System.out.println(m.toString()+" "+m.getView().getCode());
-			if(Objects.isNull(m.getParent())) {logger.info(m.toString()+" "+m.getView().getCode());}
-			SecurityMenu x = fUtils.find(SecurityMenu.class,m.getId());
-//			try {TimeUnit.SECONDS.sleep(10);} catch (InterruptedException e) {}
-		}
-	}
-
 	public static void main(String[] args) throws NamingException
 	{
 		EapBootstrap.init();
 		TestSecurityMenu test =  new TestSecurityMenu();
 		
 		test.find();
-//		test.list();
 	}
 }

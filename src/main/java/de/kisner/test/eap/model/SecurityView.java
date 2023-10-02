@@ -29,6 +29,7 @@ public class SecurityView implements Serializable
 	public String getCode() {return code;}
 	public void setCode(String code) {this.code = code;}
 
+
 	@Override public boolean equals(Object object){return (object instanceof SecurityView) ? id == ((SecurityView) object).getId() : (object == this);}
 	@Override public int hashCode() {return new HashCodeBuilder(17,53).append(id).toHashCode();}
 

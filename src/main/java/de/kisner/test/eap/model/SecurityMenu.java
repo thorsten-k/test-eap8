@@ -9,13 +9,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name="SecurityMenu",uniqueConstraints=@UniqueConstraint(name="UK_SecurityMenu_context_view",columnNames={"view_id"}))
+@Table(name="SecurityMenu",uniqueConstraints=@UniqueConstraint(columnNames={"view_id"}))
 public class SecurityMenu implements Serializable
 {
 	public static final long serialVersionUID=1;
@@ -31,10 +30,11 @@ public class SecurityMenu implements Serializable
 	public SecurityMenu getParent() {return parent;}
 	public void setParent(SecurityMenu parent) {this.parent = parent;}
 
-	@NotNull @OneToOne
+	@NotNull @ManyToOne
 	private SecurityView view;
 	public SecurityView getView() {return view;}
 	public void setView(SecurityView view) {this.view = view;}
+
 
 	@Override public boolean equals(Object object){return (object instanceof SecurityMenu) ? id == ((SecurityMenu) object).getId() : (object == this);}
 	@Override public int hashCode() {return new HashCodeBuilder(17, 53).append(id).toHashCode();}
