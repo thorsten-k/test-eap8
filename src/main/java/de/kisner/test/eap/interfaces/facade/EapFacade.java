@@ -1,12 +1,12 @@
 package de.kisner.test.eap.interfaces.facade;
 
-import org.jeesl.interfaces.facade.JeeslFacade;
+import java.io.Serializable;
+import java.util.List;
 
-public interface EapFacade extends JeeslFacade
+public interface EapFacade extends Serializable
 {	
-	public enum LocaleCode {en}
-	
 	public enum IoSsiSystemCode {eap}
-
-	public enum SecurityViewCode{ccc}
+	
+	<T extends Object> List<T> all(Class<T> type);
+	<T extends Object> T find(Class<T> type, long id);
 }

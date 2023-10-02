@@ -7,31 +7,29 @@ import javax.naming.NamingException;
 
 import org.apache.commons.configuration2.Configuration;
 import org.jeesl.api.facade.JeeslFacadeLookup;
-import org.jeesl.controller.monitoring.counter.ProcessingTimeTracker;
 import org.jeesl.exception.ejb.JeeslNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.kisner.test.eap.client.EapBootstrap;
-import de.kisner.test.eap.interfaces.facade.EapUtilsFacade;
+import de.kisner.test.eap.interfaces.facade.EapFacade;
 import de.kisner.test.eap.model.SecurityMenu;
 
 public class CliSecurityMenu
 {
 	final static Logger logger = LoggerFactory.getLogger(CliSecurityMenu.class);
 
-	private final EapUtilsFacade fUtils;
+	private final EapFacade fUtils;
 
 	private CliSecurityMenu(JeeslFacadeLookup jfl) throws NamingException
 	{
-		fUtils = jfl.lookup(EapUtilsFacade.class);
+		fUtils = jfl.lookup(EapFacade.class);
 	}
 
 	public void find() throws JeeslNotFoundException
 	{
-		ProcessingTimeTracker ptt = ProcessingTimeTracker.instance().start();
-		SecurityMenu m = fUtils.find(SecurityMenu.class,2);
-		logger.info(ptt.toTotalPeriod()+" "+m.toString());
+	
+		SecurityMenu m = fUtils.find(SecurityMenu.class,2l);
 	}
 	
 	public void list() throws JeeslNotFoundException
