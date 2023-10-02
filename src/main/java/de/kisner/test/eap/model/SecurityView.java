@@ -1,4 +1,4 @@
-package org.jeesl.model.ejb.system.security.page;
+package de.kisner.test.eap.model;
 
 import java.io.Serializable;
 

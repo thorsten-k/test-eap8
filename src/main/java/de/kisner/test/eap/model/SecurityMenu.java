@@ -1,10 +1,9 @@
-package org.jeesl.model.ejb.system.security.context;
+package de.kisner.test.eap.model;
 
 import java.io.Serializable;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.jeesl.interfaces.qualifier.er.EjbErNode;
-import org.jeesl.model.ejb.system.security.page.SecurityView;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -9,12 +9,12 @@ import org.apache.commons.configuration2.Configuration;
 import org.jeesl.api.facade.JeeslFacadeLookup;
 import org.jeesl.controller.monitoring.counter.ProcessingTimeTracker;
 import org.jeesl.exception.ejb.JeeslNotFoundException;
-import org.jeesl.model.ejb.system.security.context.SecurityMenu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import de.kisner.test.eap.client.EapBootstrap;
 import de.kisner.test.eap.interfaces.facade.EapUtilsFacade;
+import de.kisner.test.eap.model.SecurityMenu;
 
 public class CliSecurityMenu
 {
