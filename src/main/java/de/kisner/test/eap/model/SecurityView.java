@@ -33,22 +33,6 @@ public class SecurityView implements Serializable
 	 public String getCode() {return code;}
 	 public void setCode(String code) {this.code = code;}
 
-	private boolean visible;
-	 public boolean isVisible() {return visible;}
-	 public void setVisible(boolean visible) {this.visible = visible;}
-
-	private Boolean documentation;
-	 public Boolean getDocumentation() {return documentation;}
-	 public void setDocumentation(Boolean documentation) {this.documentation = documentation;}
-
-	private int position;
-	 public int getPosition() {return position;}
-	 public void setPosition(int position) {this.position = position;}
-
-
-
-
-
 
 	private Boolean accessPublic;
 	 public Boolean getAccessPublic() {return accessPublic;}

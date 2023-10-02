@@ -25,30 +25,18 @@ public class SecurityMenu implements Serializable
 
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	 public long getId() {return id;}
-	 public void setId(long id) {this.id = id;}
+	public long getId() {return id;}
+	public void setId(long id) {this.id = id;}
 
-
-	
 	@ManyToOne
 	private SecurityMenu parent;
-	 public SecurityMenu getParent() {return parent;}
-	 public void setParent(SecurityMenu parent) {this.parent = parent;}
-
-	private int position;
-	 public int getPosition() {return position;}
-	 public void setPosition(int position) {this.position = position;}
-
-	private Boolean visible;
-	 public Boolean getVisible() {return visible;}
-	 public void setVisible(Boolean visible) {this.visible = visible;}
+	public SecurityMenu getParent() {return parent;}
+	public void setParent(SecurityMenu parent) {this.parent = parent;}
 
 	@NotNull @OneToOne
 	private SecurityView view;
-	 public SecurityView getView() {return view;}
-	 public void setView(SecurityView view) {this.view = view;}
-
-
+	public SecurityView getView() {return view;}
+	public void setView(SecurityView view) {this.view = view;}
 
 	@Override public boolean equals(Object object){return (object instanceof SecurityMenu) ? id == ((SecurityMenu) object).getId() : (object == this);}
 	@Override public int hashCode() {return new HashCodeBuilder(17, 53).append(id).toHashCode();}
