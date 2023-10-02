@@ -107,7 +107,7 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- Apache Commons -->
+		<!-- Apache Commons 
 		<dependency>
 	 		<groupId>commons-configuration</groupId>
 			<artifactId>commons-configuration</artifactId>
@@ -128,7 +128,7 @@
     				<groupId>commons-logging</groupId>
     			</exclusion>
     		</exclusions>
-		</dependency>
+		</dependency> -->
 		<dependency>
         	<groupId>commons-beanutils</groupId>
         	<artifactId>commons-beanutils</artifactId>

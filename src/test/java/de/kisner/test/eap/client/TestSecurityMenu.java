@@ -5,7 +5,6 @@ import java.util.Objects;
 
 import javax.naming.NamingException;
 
-import org.apache.commons.configuration2.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -44,7 +43,7 @@ public class TestSecurityMenu
 
 	public static void main(String[] args) throws NamingException
 	{
-		Configuration config = EapBootstrap.init();
+		EapBootstrap.init();
 		TestSecurityMenu test =  new TestSecurityMenu();
 		
 		test.find();
