@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+
+<server xmlns="urn:jboss:domain:20.0">
+    <profile>
+        <subsystem xmlns="urn:jboss:domain:datasources:7.0">
+            <datasources>
+            
+            	<!-- This configuration fails -->
+                <datasource jta="true" jndi-name="java:jboss/datasources/EapDs" pool-name="EapDs" use-java-context="true" use-ccm="true" statistics-enabled="true">
+                    <connection-url>jdbc:postgresql://localhost:30016/eap</connection-url>
+                    <driver>postgres</driver>
+                    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+                    <pool>
+                        <min-pool-size>2</min-pool-size>
+                        <max-pool-size>5</max-pool-size>
+                        <prefill>true</prefill>
+                        <use-strict-min>false</use-strict-min>
+                        <flush-strategy>FailingConnectionOnly</flush-strategy>
+                    </pool>
+                    <security>
+                        <user-name>eap</user-name>
+                        <password>eap</password>
+                    </security>
+                    <validation>
+                        <check-valid-connection-sql>select 1</check-valid-connection-sql>
+                        <background-validation>true</background-validation>
+                        <background-validation-millis>5000</background-validation-millis>
+                    </validation>
+                    <statement>
+                        <prepared-statement-cache-size>32</prepared-statement-cache-size>
+                        <share-prepared-statements>true</share-prepared-statements>
+                    </statement>
+                </datasource>
+                
+                <!-- This configuration is ok -->
+                <datasource jndi-name="java:jboss/datasources/EapDs" pool-name="EapDs">
+                    <connection-url>jdbc:postgresql://localhost:30016/eap</connection-url>
+                    <driver>postgres</driver>
+                    <security>
+                        <user-name>eap</user-name>
+                        <password>eap</password>
+                    </security>
+                </datasource>
+                
+                <drivers>
+                    <driver name="postgres" module="org.postgresql.jdbc">
+                        <driver-class>org.postgresql.Driver</driver-class>
+                    </driver>
+                </drivers>
+            </datasources>
+        </subsystem>
+    </profile>
+</server>

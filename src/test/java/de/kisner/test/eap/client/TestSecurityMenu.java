@@ -1,5 +1,7 @@
 package de.kisner.test.eap.client;
 
+import java.util.concurrent.TimeUnit;
+
 import javax.naming.NamingException;
 
 import org.slf4j.Logger;
@@ -19,13 +21,18 @@ public class TestSecurityMenu
 		fUtils = EapBootstrap.lookup(EapFacade.class);
 	}
 
-	public void find()
+	public void find() throws InterruptedException
 	{
-		logger.info(fUtils.find(SecurityMenu.class,1l).toString());
+//		TimeUnit.SECONDS.sleep(2);
+//		logger.info("Finding 1");
+//		logger.info(fUtils.find(SecurityMenu.class,1l).toString());
+		
+		TimeUnit.SECONDS.sleep(2);
+		logger.info("Finding 2");
 		logger.info(fUtils.find(SecurityMenu.class,2l).toString());
 	}
 	
-	public static void main(String[] args) throws NamingException
+	public static void main(String[] args) throws NamingException, InterruptedException
 	{
 		EapBootstrap.init();
 		TestSecurityMenu test =  new TestSecurityMenu();
