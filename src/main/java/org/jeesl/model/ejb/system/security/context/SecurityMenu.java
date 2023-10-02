@@ -7,7 +7,6 @@ import org.jeesl.interfaces.qualifier.er.EjbErNode;
 import org.jeesl.model.ejb.system.security.page.SecurityView;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,7 +17,7 @@ import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name="SecurityMenu",uniqueConstraints=@UniqueConstraint(name="UK_SecurityMenu_context_view",columnNames={"context_id","view_id"}))
+@Table(name="SecurityMenu",uniqueConstraints=@UniqueConstraint(name="UK_SecurityMenu_context_view",columnNames={"view_id"}))
 @EjbErNode(name="SecurityMenu")
 public class SecurityMenu implements Serializable
 {
@@ -30,11 +29,6 @@ public class SecurityMenu implements Serializable
 	 public long getId() {return id;}
 	 public void setId(long id) {this.id = id;}
 
-	@NotNull
-	@ManyToOne(fetch=FetchType.LAZY)
-	private SecurityContext context;
-	 public SecurityContext getContext() {return context;}
-	 public void setContext(SecurityContext context) {this.context = context;}
 
 	
 	@ManyToOne
