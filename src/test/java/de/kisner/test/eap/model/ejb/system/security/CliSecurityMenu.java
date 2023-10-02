@@ -53,7 +53,7 @@ public class CliSecurityMenu
 		Configuration config = EapBootstrap.init();
 		CliSecurityMenu test =  new CliSecurityMenu(EapBootstrap.facadeLookup(config));
 		
-//		test.find();
-		test.list();
+		test.find();
+//		test.list();
 	}
 }

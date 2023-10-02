@@ -1,31 +1,14 @@
 package org.jeesl.model.ejb.system.security.page;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.jeesl.interfaces.qualifier.er.EjbErNode;
-import org.jeesl.model.ejb.io.locale.IoDescription;
-import org.jeesl.model.ejb.io.locale.IoLang;
-import org.jeesl.model.ejb.system.security.SecurityCategory;
-import org.jeesl.model.ejb.system.security.access.SecurityRole;
-import org.jeesl.model.ejb.system.security.access.SecurityUsecase;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapKey;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
@@ -43,11 +26,7 @@ public class SecurityView implements Serializable
 	 public long getId() {return id;}
 	 public void setId(long id) {this.id = id;}
 
-	
-	@NotNull @ManyToOne
-	private SecurityCategory category;
-	 public SecurityCategory getCategory() {return category;}
-	 public void setCategory(SecurityCategory category) {this.category = category;}
+
 
 	@NotNull
 	private String code;
@@ -66,32 +45,10 @@ public class SecurityView implements Serializable
 	 public int getPosition() {return position;}
 	 public void setPosition(int position) {this.position = position;}
 
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	@MapKey(name="lkey")
-	@JoinTable(name="SecurityViewJtLang",joinColumns={@JoinColumn(name="view_id")},inverseJoinColumns={@JoinColumn(name="lang_id")})
-	private Map<String,IoLang> name;
-	 public Map<String,IoLang> getName() {return name;}
-	 public void setName(Map<String,IoLang> name) {this.name = name;}
-
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	@MapKey(name="lkey")
-	@JoinTable(name="SecurityViewJtDescription",joinColumns={@JoinColumn(name="view_id")},inverseJoinColumns={@JoinColumn(name="description_id")})
-	private Map<String,IoDescription> description;
-	 public Map<String,IoDescription> getDescription() {return description;}
-	 public void setDescription(Map<String,IoDescription> description) {this.description = description;}
 
 
-	@ManyToMany(fetch=FetchType.LAZY)
-	@JoinTable(name="SecurityRoleJtView",joinColumns={@JoinColumn(name="view_id")},inverseJoinColumns={@JoinColumn(name="role_id")})
-	private List<SecurityRole> roles;
-	 public List<SecurityRole> getRoles() {if(Objects.isNull(roles)) {roles = new ArrayList<>();} return roles;}
-	 public void setRoles(List<SecurityRole> roles) {this.roles = roles;}
 
-	@ManyToMany(fetch=FetchType.LAZY)
-	@JoinTable(name="SecurityUsecaseJtView",joinColumns={@JoinColumn(name="view_id")},inverseJoinColumns={@JoinColumn(name="usecase_id")})
-	private List<SecurityUsecase> usecases;
-	 public List<SecurityUsecase> getUsecases() {if(Objects.isNull(usecases)) {usecases = new ArrayList<>();} return usecases;}
-	 public void setUsecases(List<SecurityUsecase> usecases) {this.usecases = usecases;}
+
 
 	private Boolean accessPublic;
 	 public Boolean getAccessPublic() {return accessPublic;}
