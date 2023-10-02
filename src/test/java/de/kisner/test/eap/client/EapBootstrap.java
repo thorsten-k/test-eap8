@@ -7,8 +7,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import org.apache.commons.configuration2.Configuration;
-import org.jeesl.api.facade.JeeslFacadeLookup;
-import org.jeesl.controller.facade.lookup.JeeslEap71FacadeLookup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +14,6 @@ import de.kisner.test.eap.facade.EapFacade;
 import net.sf.exlp.exception.ExlpConfigurationException;
 import net.sf.exlp.util.config.ConfigLoader;
 import net.sf.exlp.util.io.ExlpCentralConfigPointer;
-import net.sf.exlp.util.io.LoggerInit;
 import net.sf.exlp.util.xml.jk.JaxbUtil;
 
 public class EapBootstrap
@@ -58,13 +55,6 @@ public class EapBootstrap
 
 		logger.debug("Config and Logger initialized");
 		return config;
-	}
-
-
-	public static JeeslFacadeLookup facadeLookup(Configuration config)
-	{
-		JeeslEap71FacadeLookup eap71Lookup = new JeeslEap71FacadeLookup("eap");
-		return eap71Lookup;
 	}
 
 	@SuppressWarnings("unchecked")

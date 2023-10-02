@@ -55,26 +55,17 @@
 			<groupId>org.jeesl</groupId>
 			<artifactId>jeesl-api</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.jeesl</groupId>
-			<artifactId>jeesl-ejb</artifactId>
+			<artifactId>jeesl-util</artifactId>
+			<scope>test</scope>
 			<exclusions>
 				<exclusion>
 					<groupId>net.sf.exlp</groupId>
 					<artifactId>exlp-xml</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.jeesl</groupId>
-			<artifactId>jeesl-util</artifactId>
-			<scope>test</scope>
-		</dependency>
-				<dependency>
-			<groupId>net.sf.exlp</groupId>
-			<artifactId>exlp-xml</artifactId>
-			<classifier>jakarta</classifier>
-			<scope>test</scope>
 		</dependency>
 
 		<!-- PostgreSQL -->
@@ -119,6 +110,12 @@
             <version>4.0.0</version>
             <scope>test</scope>
         </dependency>
+        		<dependency>
+			<groupId>net.sf.exlp</groupId>
+			<artifactId>exlp-xml</artifactId>
+			<classifier>jakarta</classifier>
+			<scope>compile</scope>
+		</dependency>
 		
 		<!-- Apache Commons -->
 		<dependency>

@@ -20,7 +20,7 @@ public class TestSecurityMenu
 
 	private final EapFacade fUtils;
 
-	private TestSecurityMenu(JeeslFacadeLookup jfl) throws NamingException
+	private TestSecurityMenu() throws NamingException
 	{
 		fUtils = EapBootstrap.lookup(EapFacade.class);
 	}
@@ -48,7 +48,7 @@ public class TestSecurityMenu
 	public static void main(String[] args) throws NamingException, JeeslNotFoundException
 	{
 		Configuration config = EapBootstrap.init();
-		TestSecurityMenu test =  new TestSecurityMenu(EapBootstrap.facadeLookup(config));
+		TestSecurityMenu test =  new TestSecurityMenu();
 		
 		test.find();
 //		test.list();
