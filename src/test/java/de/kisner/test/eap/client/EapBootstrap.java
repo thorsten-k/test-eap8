@@ -6,7 +6,7 @@ import org.jeesl.controller.facade.lookup.JeeslEap71FacadeLookup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.kisner.test.eap.interfaces.facade.EapFacade;
+import de.kisner.test.eap.facade.EapFacade;
 import net.sf.exlp.exception.ExlpConfigurationException;
 import net.sf.exlp.util.config.ConfigLoader;
 import net.sf.exlp.util.io.ExlpCentralConfigPointer;

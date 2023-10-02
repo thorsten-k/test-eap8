@@ -1,4 +1,4 @@
-package de.kisner.test.eap.interfaces.repository;
+package de.kisner.test.eap.facade;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

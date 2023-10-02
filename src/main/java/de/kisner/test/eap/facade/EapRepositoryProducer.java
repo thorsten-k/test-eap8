@@ -1,4 +1,4 @@
-package de.kisner.test.eap.interfaces.repository;
+package de.kisner.test.eap.facade;
 
 import jakarta.enterprise.inject.Produces;
 import jakarta.persistence.EntityManager;

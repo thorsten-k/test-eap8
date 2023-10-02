@@ -1,4 +1,4 @@
-package de.kisner.test.eap.interfaces.facade;
+package de.kisner.test.eap.facade;
 
 import java.io.Serializable;
 import java.util.List;

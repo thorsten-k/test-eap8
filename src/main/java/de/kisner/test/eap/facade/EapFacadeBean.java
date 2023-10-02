@@ -1,12 +1,10 @@
-package de.kisner.test.eap.controller.facade;
+package de.kisner.test.eap.facade;
 
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.kisner.test.eap.interfaces.facade.EapFacade;
-import de.kisner.test.eap.interfaces.repository.EapRepository;
 import jakarta.ejb.Remote;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;

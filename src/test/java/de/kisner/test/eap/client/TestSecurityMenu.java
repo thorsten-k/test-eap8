@@ -1,4 +1,4 @@
-package de.kisner.test.eap.model.ejb.system.security;
+package de.kisner.test.eap.client;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,17 +11,16 @@ import org.jeesl.exception.ejb.JeeslNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.kisner.test.eap.client.EapBootstrap;
-import de.kisner.test.eap.interfaces.facade.EapFacade;
+import de.kisner.test.eap.facade.EapFacade;
 import de.kisner.test.eap.model.SecurityMenu;
 
-public class CliSecurityMenu
+public class TestSecurityMenu
 {
-	final static Logger logger = LoggerFactory.getLogger(CliSecurityMenu.class);
+	final static Logger logger = LoggerFactory.getLogger(TestSecurityMenu.class);
 
 	private final EapFacade fUtils;
 
-	private CliSecurityMenu(JeeslFacadeLookup jfl) throws NamingException
+	private TestSecurityMenu(JeeslFacadeLookup jfl) throws NamingException
 	{
 		fUtils = jfl.lookup(EapFacade.class);
 	}
@@ -49,7 +48,7 @@ public class CliSecurityMenu
 	public static void main(String[] args) throws NamingException, JeeslNotFoundException
 	{
 		Configuration config = EapBootstrap.init();
-		CliSecurityMenu test =  new CliSecurityMenu(EapBootstrap.facadeLookup(config));
+		TestSecurityMenu test =  new TestSecurityMenu(EapBootstrap.facadeLookup(config));
 		
 		test.find();
 //		test.list();
