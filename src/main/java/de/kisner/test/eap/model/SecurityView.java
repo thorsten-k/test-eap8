@@ -3,7 +3,6 @@ package de.kisner.test.eap.model;
 import java.io.Serializable;
 
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.jeesl.interfaces.qualifier.er.EjbErNode;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,7 +14,6 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="SecurityView",uniqueConstraints=@UniqueConstraint(columnNames={"code"}))
-@EjbErNode(name="SecurityView")
 public class SecurityView implements Serializable
 {
 	public static final long serialVersionUID=1;

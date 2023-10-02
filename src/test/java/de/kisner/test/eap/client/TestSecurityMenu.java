@@ -6,8 +6,6 @@ import java.util.Objects;
 import javax.naming.NamingException;
 
 import org.apache.commons.configuration2.Configuration;
-import org.jeesl.api.facade.JeeslFacadeLookup;
-import org.jeesl.exception.ejb.JeeslNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,13 +23,12 @@ public class TestSecurityMenu
 		fUtils = EapBootstrap.lookup(EapFacade.class);
 	}
 
-	public void find() throws JeeslNotFoundException
+	public void find()
 	{
-	
 		SecurityMenu m = fUtils.find(SecurityMenu.class,2l);
 	}
 	
-	public void list() throws JeeslNotFoundException
+	public void list()
 	{
 		List<SecurityMenu> list = fUtils.all(SecurityMenu.class);
 		logger.info(SecurityMenu.class.getSimpleName()+": "+list.size());
@@ -45,7 +42,7 @@ public class TestSecurityMenu
 		}
 	}
 
-	public static void main(String[] args) throws NamingException, JeeslNotFoundException
+	public static void main(String[] args) throws NamingException
 	{
 		Configuration config = EapBootstrap.init();
 		TestSecurityMenu test =  new TestSecurityMenu();

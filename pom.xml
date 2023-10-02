@@ -45,16 +45,6 @@
 			<artifactId>jakarta.jakartaee-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
-		<!-- JEESL -->
-		<dependency>
-			<groupId>org.jeesl</groupId>
-			<artifactId>jeesl-interfaces</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.jeesl</groupId>
-			<artifactId>jeesl-api</artifactId>
-		</dependency>
 		
 		<dependency>
 			<groupId>org.jeesl</groupId>
@@ -72,7 +62,7 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<scope>provided</scope>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 		    <groupId>org.flywaydb</groupId>
@@ -110,11 +100,11 @@
             <version>4.0.0</version>
             <scope>test</scope>
         </dependency>
-        		<dependency>
+		<dependency>
 			<groupId>net.sf.exlp</groupId>
 			<artifactId>exlp-xml</artifactId>
 			<classifier>jakarta</classifier>
-			<scope>compile</scope>
+			<scope>test</scope>
 		</dependency>
 		
 		<!-- Apache Commons -->
@@ -156,12 +146,12 @@
    			<scope>provided</scope>
 		</dependency>
 		
-				<!-- Deprecated -->
+		<!-- Deprecated 
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> -->
 		
 		<!-- Logging -->
 		<dependency>
