@@ -1,7 +1,5 @@
 package de.kisner.test.eap.client;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.naming.NamingException;
 
 import org.slf4j.Logger;
@@ -26,8 +24,8 @@ public class TestSecurityMenu
 //		TimeUnit.SECONDS.sleep(2);
 //		logger.info("Finding 1");
 //		logger.info(fUtils.find(SecurityMenu.class,1l).toString());
+//		TimeUnit.SECONDS.sleep(2);
 		
-		TimeUnit.SECONDS.sleep(2);
 		logger.info("Finding 2");
 		logger.info(fUtils.find(SecurityMenu.class,2l).toString());
 	}
