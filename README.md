@@ -7,14 +7,14 @@
 		CREATE DATABASE eap OWNER eap ENCODING 'UTF8';
 
 - Download EAP 8.0 Beta (https://developers.redhat.com/products/eap/download)
-- Start EAP with bin/standalone.sh -c standalone-ha.xml
-- Configure JBoss EAP (please replace the path to the postgresql.jar with your settings), then execute bin/jboss-cli.sh -c
+- Start EAP with *bin/standalone.sh -c standalone-ha.xml*
+- Configure JBoss EAP (please replace the path to the .m2 repository with your settings), then execute *bin/jboss-cli.sh -c*
 
 		module add --name=org.postgresql.jdbc --resources=/Users/thorsten/.m2/repository/org/postgresql/postgresql/42.6.0/postgresql-42.6.0.jar --dependencies=javax.api,javax.transaction.api
 		/subsystem=datasources/jdbc-driver=postgresql:add(driver-name="postgresql",driver-module-name="org.postgresql.jdbc",driver-class-name=org.postgresql.Driver)
 		data-source add --jndi-name=java:jboss/datasources/EapDs --name=EapDs --connection-url=jdbc:postgresql://localhost:30016/eap --driver-name=postgresql --user-name=eap --password=eap
 		
-- Stop Jboss, open standalone-ha.xml and the add the statement section for the DataStore definition in standalone.xml
+- Stop Jboss, open **standalone-ha.xml** and the add the statement-section for the datasource definition 
 
 		<datasource jndi-name="java:jboss/datasources/EapDs" ...>
 			<statement>
@@ -31,11 +31,20 @@
 		INSERT INTO SecurityMenu (id,view_id,parent_id) VALUES (1,1,NULL)
 		INSERT INTO SecurityMenu (id,view_id,parent_id) VALUES (2,2,1)
 
-- Execute TestSecurityMenu, this will try to retrieve the SecurityMenu entry with id=2
+- Execute **TestSecurityMenu**, this will try to retrieve the SecurityMenu entry with id=2 with the following SQL statements
+
+		select s1_0.id,s1_0.parent_id,s1_0.view_id from SecurityMenu s1_0 where s1_0.id=?
+		select s1_0.id,s1_0.parent_id,s1_0.view_id from SecurityMenu s1_0 where s1_0.id=?
+		select s1_0.id,s1_0.code from SecurityView s1_0 where s1_0.id=?
+		select s1_0.id,s1_0.code from SecurityView s1_0 where s1_0.id=?
 
 - You will geth the error
 
 		HHH000327: Error performing load command: org.hibernate.sql.exec.ExecutionException:
 		A problem occurred in the SQL executor : Error advancing (next) ResultSet position
+		
+		jakarta.ejb.EJBException: jakarta.persistence.PersistenceException:
+		Converting `org.hibernate.sql.exec.ExecutionException` to JPA `PersistenceException` :
+		A problem occurred in the SQL executor : Error advancing (next) ResultSet position
     
-- Stop JBoss, remove the statement-section in the datasource, start JBoss and try again.
+- Stop JBoss, remove the statement-section in the datasource, start JBoss and try again (it should work without errors)
