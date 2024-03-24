@@ -9,10 +9,10 @@
 	</parent>
 	
 	<groupId>de.kisner.test</groupId>
-	<artifactId>test-eap</artifactId>
+	<artifactId>test-ee10</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>EAP Test</name>
+	<name>EE10 Test</name>
    
 	<properties>
 	  	<my.build.directory>target</my.build.directory>
