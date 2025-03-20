@@ -13,8 +13,6 @@ public class EapBootstrap
 {
 	final static Logger logger = LoggerFactory.getLogger(EapBootstrap.class);
 
-
-
 	public static void init()
 	{
 		logger.info("Init");
